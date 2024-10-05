@@ -17,9 +17,11 @@ const faangImages = [
   microsoft,
 ];
 
+
 const FAANGCarousel = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const { colorMode } = useColorMode();
+  
 
   useEffect(() => {
     const handleResize = () => {
