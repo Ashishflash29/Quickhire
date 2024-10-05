@@ -73,7 +73,7 @@ app.listen(PORT, () => {
 
 // Keep-alive pinging
 setInterval(() => {
-    axios.get(`https://job-portal-7iyl.onrender.com`)
+    axios.get(`https://quickhire-0zvh.onrender.com`)
         .then(response => {
             console.log('Keep-alive ping successful');
         })
