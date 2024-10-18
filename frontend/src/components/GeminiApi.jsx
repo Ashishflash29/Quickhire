@@ -20,8 +20,22 @@ import {
   ModalFooter,
 } from '@chakra-ui/react';
 import Navbar from './shared/Navbar';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const GeminiApi = () => {
+
+  const navigate = useNavigate(); // Router hook for navigation
+  const { user } = useSelector((store) => store.auth); // Get the current user from Redux store
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login'); // Redirect to login if user is not logged in
+    }
+  }, [user, navigate]);
+
+
+
   const [jobs, setJobs] = useState([]);
   const [questions, setQuestions] = useState({});
   const [loadingJobId, setLoadingJobId] = useState(null); // Track loading state per job

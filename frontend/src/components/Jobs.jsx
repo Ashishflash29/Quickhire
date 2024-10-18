@@ -5,8 +5,18 @@ import Job from "./Job";
 import { useSelector } from "react-redux";
 import {motion} from 'framer-motion'
 import Footer from "./shared/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Jobs = () => {
+  
+  const navigate = useNavigate(); // Router hook for navigation
+  const { user } = useSelector((store) => store.auth); // Get the current user from Redux store
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login'); // Redirect to login if user is not logged in
+    }
+  }, [user, navigate]);
 
   const {allJobs,searchedQuery} = useSelector(store=>store.job);
   const [filterJobs,setFilterJobs] = useState(allJobs);

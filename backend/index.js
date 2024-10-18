@@ -9,7 +9,7 @@ import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 import aiRoute from './routes/ai.route.js';
 import path from "path";
-import axios from "axios";  // Import axios for self-pinging
+import axios from "axios";  
 import session from "express-session";
 import MongoStore from 'connect-mongo';
 

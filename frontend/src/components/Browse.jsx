@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSearchedQuery } from '../redux/jobSlice';
 import useGetAllJobs from '../hooks/useGetAllJobs';
 import Footer from './shared/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const Browse = () => {
     useGetAllJobs();
@@ -16,6 +17,16 @@ const Browse = () => {
             dispatch(setSearchedQuery(""));
         };
     }, [dispatch]);
+
+    const navigate = useNavigate(); // Router hook for navigation
+    const { user } = useSelector((store) => store.auth); // Get the current user from Redux store
+
+    useEffect(() => {
+    if (!user) {
+      navigate('/login'); // Redirect to login if user is not logged in
+    }
+  }, [user, navigate]);
+
 
     return (
         <div>
